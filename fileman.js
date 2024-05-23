@@ -6,7 +6,6 @@ const path = require('path');
 async function traverseFolderContents(directory) {
     try {
         // Read directory contents
-
         const files = await fs.promises.readdir(directory, { withFileTypes: true });
 
         let filesCount = files.length;
@@ -14,7 +13,6 @@ async function traverseFolderContents(directory) {
         let infoFileExists = files.find(x => x.name == "info.json") ? 1 : 0;
 
         // Count folders
-
         for (const file of files)
             if (file.isDirectory()) folderCount++;
 
