@@ -28,12 +28,12 @@ async function firstRecursiveApproach(directory) {
 let dirs = [];
 
 // Traverse all the subdirs and save absolute paths
-function ThroughDirectory(directory) {
+function extractSubdirAbsolutes(directory) {
     fs.readdirSync(directory).forEach(file => {
         const absolute = path.join(directory, file);
         if (fs.statSync(absolute).isDirectory()) {   
                 dirs.push(absolute);
-                return ThroughDirectory(absolute);
+                return extractSubdirAbsolutes(absolute);
         }
     });
 }
@@ -42,9 +42,10 @@ function ThroughDirectory(directory) {
 async function secondRecursiveApproach(directory) {
     dirs.length = 0;
 
+    // Add current directory
     dirs.push(directory);
 
-    ThroughDirectory(directory);
+    extractSubdirAbsolutes(directory);
     
     for(dr of dirs)
         await createInfoFile(dr);

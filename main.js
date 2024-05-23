@@ -3,6 +3,7 @@ const {
     secondRecursiveApproach
  } = require('./recursive.js');
 
- // firstRecursiveApproach(__dirname);
 
- secondRecursiveApproach(__dirname);
+ firstRecursiveApproach(__dirname);
+
+ // secondRecursiveApproach(__dirname);
